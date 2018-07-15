@@ -1,0 +1,150 @@
+SetRowsNumber(0)
+//×¢Òâ£ºÃ¿´ÎÖÆ×÷Íê×Ö¿âºó£¬ÐèÒª×ÔÐÐ°ÑÖÆ×÷µÄ×Ö¿âÎÄ¼þÌí¼Óµ½½Å±¾¡°¸½¼þ¡±ÖÐ
+TracePrint SetDictEx(0, "Attachment:mq_soft.txt")
+TracePrint UseDict(0)
+//ÒÔÉÏÁ½¾ä½Å±¾Ö»ÐèÒªµ÷ÓÃÒ»´Î
+
+Sub Login
+	Dim Waiting_button,Enter_button
+	Waiting_button = {"Waiting_button":"708|512|1E1E4D,567|538|151A20,806|381|C5D7E1,615|515|FFFFFF,653|517|F7F7F9,637|228|D9EDF7,604|505|EAEAEF"}
+	Do
+	If CmpColorEx("708|512|1E1E4D,567|538|151A20,806|381|C5D7E1,615|515|FFFFFF,653|517|F7F7F9,637|228|D9EDF7,604|505|EAEAEF", 0.8)=1 Then 
+	 ShowMessage "Waiting.."
+	 Delay 3000
+	Else 
+	 ShowMessage "Login!"
+	 Delay 3000
+	 Exit Do
+	End If
+	Loop
+End Sub
+
+Sub Heal
+	Dim Health_start,Health_end,start_x,end_x,start_y,end_y,col
+	start_x=274
+	end_x=81
+	Health_end={"Health_end":"81|20|0006A9,81|22|0006A1,81|32|00069F,81|33|00069D,81|25|00069D"}
+		
+	If CmpColorEx("225|21|0009FF,225|23|0009FF,225|31|0009FF,225|33|0009FF,225|28|0009FF", 0.8)=0 Then 
+		TracePrint "heal not full"
+			
+		// heal method
+		Tap 620, 640
+		Delay 1000
+		
+		If CmpColorEx("165|21|0009FF,165|23|0009FF,165|31|0009FF,165|33|0009FF,165|28|0009FF", 0.8)=0 Then 
+			TracePrint "low heal"
+			// hp under 50% 
+			//click transport
+			Tap 1044, 642
+			Delay 200
+			
+			//click heal
+			Tap 620, 640
+			Delay 500
+		End If
+	
+	End If
+
+End Sub
+
+Sub Mana
+	Dim Health_start,Health_end,start_x,end_x,start_y,end_y,col
+	start_x=274
+	end_x=81
+	Health_end={"Health_end":"81|20|0006A9,81|22|0006A1,81|32|00069F,81|33|00069D,81|25|00069D"}
+	If CmpColorEx("178|44|BF5402,178|41|CA5800,178|46|D06004,178|47|E97008,178|45|C25B09", 0.8)=0 Then 
+		TracePrint "mana not full"
+		// restore mana
+	    Tap 541, 634
+	    Delay 1000
+	End If
+End Sub
+
+Sub Tripleshot
+	Dim Health_start,Health_end,start_x,end_x,start_y,end_y,col
+	start_x=274
+	end_x=81
+	TracePrint "siu siu siu3"
+	
+	If CmpColorEx("1077|513|F2FFFF-101010,1095|494|F1FFFF-101010,1075|537|F0FFFF-101010,1118|495|E0FFFF-101010,1073|496|F2FFFF-101010", 0.8) = 1 Then
+		TracePrint "siu siu siu2"		
+		If CmpColorEx("232|39|E06905-101010,232|41|C55600-101010,233|45|CE5900-101010,232|46|D56002-101010,1073|496|F2FFFF-101010", 0.8)=1 Then
+			TracePrint "siu siu siu"
+		// restore mana
+	    	Tap 699, 634
+	    	Delay 2000
+		End If
+	End If
+End Sub
+
+Sub SelectCharater
+	Dim Charater1
+	
+	Charater1={"Charater1":"81|20|0006A9,81|22|0006A1,81|32|00069F,81|33|00069D,81|25|00069D"}
+	If CmpColorEx("180|108|487180,160|175|0F17EB,453|142|375561,153|93|83C1D9,117|141|0C0CC0,1131|657|4F321F,1101|659|FEFEFE,1068|660|F1EFED,998|663|4B301D,1075|686|BF8447", 0.8)=1 Then 
+		TracePrint "Select charater1"
+		// restore mana
+	    Tap 163,142
+	    Delay 1000
+	    // Press Enter
+	    Tap 1095,662 
+	    Delay 1000
+	End If
+End Sub
+
+Sub GetHealthValue
+    Dim thouand,hunderd,ten,digit,intx,inty,abc
+    
+    SetRowsNumber(0)
+    //×¢Òâ£ºÃ¿´ÎÖÆ×÷Íê×Ö¿âºó£¬ÐèÒª×ÔÐÐ°ÑÖÆ×÷µÄ×Ö¿âÎÄ¼þÌí¼Óµ½½Å±¾¡°¸½¼þ¡±ÖÐ
+    TracePrint SetDictEx(0, "Attachment:mq_soft.txt")
+    TracePrint UseDict(0)
+    abc = FindStr(157,14,167,29,"2","96A1A0-202020|CBD2D1-202020|C5C7F5-202020|DCDDF6-202020|C4CDCD-202020|C9CBF5-202020|9C9FE7-101010|FEFEFF-202020|F8F8FD-202020|E3E4F8-202020",0.9,intx,inty) 
+    TracePrint abc
+End Sub
+
+Sub Detox
+	If CmpColorEx("91|24|203725-101010,82|31|233D2A-101010,82|22|1E3424-101010,100|33|213E27-101010,85|31|1E3625-101010", 0.8)=1 Then 
+	    // Press Enter
+	    Tap 784, 645
+	    TracePrint "Detox"
+	    Delay 800
+	End If	
+End Sub
+
+Sub Fight
+	If CmpColorEx("1198|545|94AEFF-101010,1201|548|7C95FF-101010,1199|552|6D87FF-101010,1077|498|3B56D7-101010,1119|539|304CC8-101010,1193|570|2B39E8-101010,1203|549|0C21FC-101010,1120|540|334ECC-202020", 0.8)=1 Then 
+	    // Press Enter
+	    Tap 1044,642
+	    TracePrint "Fight"
+	End If	
+End Sub
+
+Function main
+
+	Dim i=0,ocrchar
+
+	// Check login status
+	Login()	
+    SelectCharater ()
+	//GetHealthValue ()
+	Do	
+	    Fight()
+	    ocrchar=Ocr(618,218,662,245,"A8B9C2-101010|DBF0FA-101010|7B8992-101010|D9EDF7-101010|C0D3DD-101010|AABBC5-101010",0.9)
+        Traceprint ocrchar
+		//Delay 3000
+		Heal ()
+		
+		// mana
+		Mana ()
+		
+		//triple shot
+		Tripleshot 
+		
+		// Detox
+		Detox ()
+	Loop
+End Function
+
+main
